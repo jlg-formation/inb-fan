@@ -11,5 +11,8 @@
     "exo"
   ],
   "author": "Tognon GUIDI",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "express": "4.15.2"
+  }
 }

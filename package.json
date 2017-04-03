@@ -13,6 +13,8 @@
   "author": "Tognon GUIDI",
   "license": "ISC",
   "devDependencies": {
-    "express": "4.15.2"
+    "angular": "1.6.4",
+    "express": "4.15.2",
+    "serve-index": "1.8.0"
   }
 }

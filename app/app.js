@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('main', ['inb-router']);
+	var app = angular.module('main', ['inb-router', 'inb-stars']);
 
 	app.directive('inbHeader', function() {
 		return {

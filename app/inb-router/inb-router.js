@@ -1,42 +1,45 @@
-(function () {
-	'use strict';
+'use strict';
 
-	var app = angular.module('inb-router', ['ui.router']);
+var app = angular.module('inb-router', ['ui.router']);
 
-	app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-		'ngInject';
+var homeUrl = require('./tmpl/home.html');
+var contactUrl = require('./tmpl/contact.html');
+var productUrl = require('./tmpl/product.html');
+var serviceUrl = require('./tmpl/service.html');
 
-		$locationProvider
-			.html5Mode(true);
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+	'ngInject';
 
-		var homeState = {
-			name: 'home',
-			url: '/',
-			templateUrl: './inb-router/tmpl/home.html'
-		};
+	$locationProvider
+		.html5Mode(true);
 
-		var productState = {
-			name: 'product',
-			url: '/product',
-			templateUrl: './inb-router/tmpl/product.html'
-		};
+	var homeState = {
+		name: 'home',
+		url: '/',
+		templateUrl: homeUrl
+	};
 
-		var serviceState = {
-			name: 'service',
-			url: '/service',
-			templateUrl: './inb-router/tmpl/service.html'
-		};
+	var productState = {
+		name: 'product',
+		url: '/product',
+		templateUrl: productUrl
+	};
 
-		var contactState = {
-			name: 'contact',
-			url: '/contact',
-			templateUrl: './inb-router/tmpl/contact.html'
-		};
+	var serviceState = {
+		name: 'service',
+		url: '/service',
+		templateUrl: serviceUrl
+	};
 
-		$stateProvider.state(homeState);
-		$stateProvider.state(productState);
-		$stateProvider.state(serviceState);
-		$stateProvider.state(contactState);
-		$urlRouterProvider.otherwise('/');
-	});
-})();
+	var contactState = {
+		name: 'contact',
+		url: '/contact',
+		templateUrl: contactUrl
+	};
+
+	$stateProvider.state(homeState);
+	$stateProvider.state(productState);
+	$stateProvider.state(serviceState);
+	$stateProvider.state(contactState);
+	$urlRouterProvider.otherwise('/');
+});

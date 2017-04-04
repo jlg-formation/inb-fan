@@ -14,9 +14,13 @@
   "license": "ISC",
   "devDependencies": {
     "angular": "1.6.4",
+    "angular-ui-router": "0.4.2",
     "eslint": "3.19.0",
     "eslint-config-google": "0.7.1",
     "express": "4.15.2",
     "serve-index": "1.8.0"
+  },
+  "dependencies": {
+    "angular-ui-router": "^0.4.2"
   }
 }

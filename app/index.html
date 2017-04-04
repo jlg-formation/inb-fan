@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="main">
 	<head>
+		<base href="/app/">
 		<title>My First Angular directive</title>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
         <inb-header></inb-header>
         <inb-body></inb-body>  
         <inb-footer></inb-footer>
-		<script src="../node_modules/angular/angular.min.js"></script>
+		<script src="../node_modules/angular/angular.js"></script>
+		<script src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="app.js"></script>
-		<script src="clone.js"></script>
+		<script src="inb-router/inb-router.js"></script>
 	</body>
 </html>

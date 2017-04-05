@@ -72,3 +72,19 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	$stateProvider.state(contactState);
 	$urlRouterProvider.otherwise('/');
 });
+
+app.component('inbButton', {
+	bindings: {
+		clickAction: '&'
+	},
+	controller: function($scope, $element, $compile) {
+		'ngInject';
+		var ctrl = this;
+		ctrl.$onInit = function() {
+			var html = '<button ng-click="$ctrl.clickAction()">{{$ctrl.label}}</button>';
+			ctrl.label = $element.text();
+			$element.html(html);
+			$compile($element.contents())($scope);
+		};
+	}
+});

@@ -7,11 +7,17 @@ var contactUrl = require('./tmpl/contact.html');
 var productUrl = require('./tmpl/product.html');
 var serviceUrl = require('./tmpl/service.html');
 
-function ProductCtrl() {
+function ProductCtrl($http) {
+	'ngInject';
 	console.log('ProductCtrl', this, arguments);
 	var ctrl = this;
 	ctrl.start = function() {
 		console.log('start', arguments);
+		$http.get('').then(function(response) {
+
+		}).catch(function(error) {
+
+		});
 	};
 }
 

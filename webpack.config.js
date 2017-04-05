@@ -12,26 +12,34 @@ module.exports = {
 	},
 	module: {
 		rules: [{
-			test: /\.css$/,
-			use: ExtractTextPlugin.extract({
-				fallback: "style-loader",
-				use: "css-loader?minimize&sourceMap"
-			})
-		}, {
-			test: /\.html$/,
-			use: [{
-				loader: 'ngtemplate-loader',
-				options: {
-					relativeTo: 'app'
-				}
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [{
+					loader: 'ng-annotate-loader'
+				}]
+			},
+			{
+				test: /\.css$/,
+				use: ExtractTextPlugin.extract({
+					fallback: "style-loader",
+					use: "css-loader?minimize&sourceMap"
+				})
 			}, {
-				loader: 'html-loader',
-				options: {
-					attrs: 'img-svg:src',
-					root: path.resolve('./app')
-				}
-			}]
-		}]
+				test: /\.html$/,
+				use: [{
+					loader: 'ngtemplate-loader',
+					options: {
+						relativeTo: 'app'
+					}
+				}, {
+					loader: 'html-loader',
+					options: {
+						attrs: 'img-svg:src',
+						root: path.resolve('./app')
+					}
+				}]
+			}
+		]
 	},
 	devtool: 'source-map',
 	plugins: [

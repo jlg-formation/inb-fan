@@ -1,0 +1,25 @@
+$primaryColor: hsla(120, 100%, 50%, 1);
+
+menu {
+	display: block;
+	>item {
+		display: inline-block;
+		padding: 0px;
+		margin: 5px;
+		>a {
+			display: block;
+			padding: 10px;
+			background-color: $primaryColor;
+			text-decoration: none;
+			color: white;
+			border-radius: 10px;
+		}
+		a:hover {
+			background-color: hsla(120, 100%, 90%, 1);
+		}
+		a:active,
+		a.active {
+			background-color: hsla(120, 100%, 30%, 1);
+		}
+	}
+}

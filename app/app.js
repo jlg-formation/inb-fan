@@ -1,6 +1,6 @@
 'use strict';
 require('angular/angular-csp.css');
-require('./style.css');
+require('./style.scss');
 
 require('angular');
 require('angular-ui-router');

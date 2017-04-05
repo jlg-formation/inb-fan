@@ -3,11 +3,13 @@ describe('Selenium Test Case', function() {
     var text, value, bool, source, url, title;
     var TestVars = {};
     browser.get("http://localhost:8000/app/");
-    element(by.xpath("//inb-body/ui-view/inb-stars[1]/img[5]")).click();
+    var img1 = element(by.xpath("//inb-body/ui-view/inb-stars[1]/img[5]")).click();
+    expect(img1.getAttribute('src')).toContain('yellow');
     element(by.xpath("//inb-body/ui-view/inb-stars[2]/img[5]")).click();
     element(by.xpath("//inb-body/ui-view/inb-stars[4]/img[5]")).click();
     element(by.xpath("//inb-body/ui-view/inb-stars[1]/img[5]")).click();
     element(by.xpath("//inb-body/ui-view/inb-stars[5]/img[5]")).click();
+
     element(by.linkText("Produits")).click();
     element(by.css("button.ng-binding.ng-scope")).click();
   });

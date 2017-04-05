@@ -5,7 +5,7 @@
 
 	app.component('inbStars', {
 		bindings: {
-			n: '=note'
+			n: '=?note'
 		},
 		controller: function ($scope, $element, $compile) {
 			'ngInject';

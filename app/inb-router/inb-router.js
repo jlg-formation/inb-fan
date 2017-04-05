@@ -11,7 +11,7 @@ function ProductCtrl($http, $q) {
 	'ngInject';
 	console.log('ProductCtrl', this, arguments);
 	var ctrl = this;
-	ctrl.start = function() {
+	ctrl.start = function(next) {
 		console.log('start', arguments);
 		$http.get('../ws/s1').then(function(response) {
 			console.log('response', response);
@@ -28,6 +28,8 @@ function ProductCtrl($http, $q) {
 			return $http.get('../ws/s5');
 		}).then(function(response) {
 			console.log('response', response);
+		}).finally(function() {
+			next();
 		}).catch(function(error) {
 			console.error('error', error);
 		});
@@ -75,16 +77,33 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
 app.component('inbButton', {
 	bindings: {
-		clickAction: '&'
+		clickAction: '<'
 	},
 	controller: function($scope, $element, $compile) {
 		'ngInject';
 		var ctrl = this;
+		ctrl.doAction = function() {
+			console.log('on start');
+			ctrl.state = 1;
+			ctrl.clickAction(function() {
+				console.log('on end');
+				ctrl.state = 0;
+			});
+
+		};
+		ctrl.state = 0;
 		ctrl.$onInit = function() {
-			var html = '<button ng-click="$ctrl.clickAction()">{{$ctrl.label}}</button>';
 			ctrl.label = $element.text();
+		};
+		$scope.$watch('$ctrl.state', function() {
+			var html;
+			if (ctrl.state === 0) {
+				html = '<button ng-click="$ctrl.doAction()">{{$ctrl.label}}</button>';
+			} else {
+				html = 'progression';
+			}
 			$element.html(html);
 			$compile($element.contents())($scope);
-		};
+		});
 	}
 });

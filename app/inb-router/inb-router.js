@@ -7,6 +7,14 @@ var contactUrl = require('./tmpl/contact.html');
 var productUrl = require('./tmpl/product.html');
 var serviceUrl = require('./tmpl/service.html');
 
+function ProductCtrl() {
+	console.log('ProductCtrl', this, arguments);
+	var ctrl = this;
+	ctrl.start = function() {
+		console.log('start', arguments);
+	};
+}
+
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	'ngInject';
 
@@ -22,7 +30,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	var productState = {
 		name: 'product',
 		url: '/product',
-		templateUrl: productUrl
+		templateUrl: productUrl,
+		controller: ProductCtrl,
+		controllerAs: '$ctrl'
 	};
 
 	var serviceState = {

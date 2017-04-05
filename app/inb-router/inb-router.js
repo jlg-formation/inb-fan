@@ -1,13 +1,13 @@
 'use strict';
 
-var app = angular.module('inb-router', ['ui.router']);
+var app = angular.module('inb-router', ['ui.router', 'inb-log']);
 
 var homeUrl = require('./tmpl/home.html');
 var contactUrl = require('./tmpl/contact.html');
 var productUrl = require('./tmpl/product.html');
 var serviceUrl = require('./tmpl/service.html');
 
-function ProductCtrl($http, $q) {
+function ProductCtrl($http, $q, inbLogs) {
 	'ngInject';
 	console.log('ProductCtrl', this, arguments);
 	var ctrl = this;
@@ -15,9 +15,11 @@ function ProductCtrl($http, $q) {
 		console.log('start', arguments);
 		$http.get('../ws/s1').then(function(response) {
 			console.log('response', response);
+			inbLogs.add(JSON.stringify(response.data));
 			return $q.all([
-				$http.get('../ws/s2').then(function() {
+				$http.get('../ws/s2').then(function(response) {
 					console.log('response', response);
+					inbLogs.add(JSON.stringify(response.data));
 					return $http.get('../ws/s6')
 				}),
 				$http.get('../ws/s3'),
@@ -25,10 +27,15 @@ function ProductCtrl($http, $q) {
 			]);
 		}).then(function(responses) {
 			console.log('responses', responses);
+			inbLogs.add(JSON.stringify(responses[0].data));
+			inbLogs.add(JSON.stringify(responses[1].data));
+			inbLogs.add(JSON.stringify(responses[2].data));
 			return $http.get('../ws/s5');
 		}).then(function(response) {
 			console.log('response', response);
+			inbLogs.add(JSON.stringify(response.data));
 		}).finally(function() {
+			inbLogs.add('finished');
 			next();
 		}).catch(function(error) {
 			console.error('error', error);

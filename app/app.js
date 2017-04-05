@@ -6,8 +6,9 @@ require('angular');
 require('angular-ui-router');
 require('./inb-router/inb-router.js');
 require('./inb-stars/inb-stars.js');
+require('./inb-log/inb-log.js');
 
-var app = angular.module('main', ['inb-router', 'inb-stars']);
+var app = angular.module('main', ['inb-log', 'inb-router', 'inb-stars']);
 
 var inbHeaderUrl = require('./tmpl/inb-header.html');
 

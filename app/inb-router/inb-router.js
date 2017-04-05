@@ -13,10 +13,10 @@ function ProductCtrl($http) {
 	var ctrl = this;
 	ctrl.start = function() {
 		console.log('start', arguments);
-		$http.get('').then(function(response) {
-
+		$http.get('../ws/s1').then(function(response) {
+			console.log('response', response);
 		}).catch(function(error) {
-
+			console.error('error', error);
 		});
 	};
 }

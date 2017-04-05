@@ -100,10 +100,11 @@ app.component('inbButton', {
 			if (ctrl.state === 0) {
 				html = '<button ng-click="$ctrl.doAction()">{{$ctrl.label}}</button>';
 			} else {
-				html = 'progression';
+				html = '<background-bar><foreground-bar></foreground-bar></background-bar>';
 			}
 			$element.html(html);
 			$compile($element.contents())($scope);
+			//$element.find('button').css('background-color', 'black');
 		});
 	}
 });

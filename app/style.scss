@@ -1,4 +1,5 @@
 $primaryColor: hsla(120, 100%, 50%, 1);
+$lightColor: hsla(120, 100%, 90%, 1);
 
 menu {
 	display: block;
@@ -21,5 +22,42 @@ menu {
 		a.active {
 			background-color: hsla(120, 100%, 30%, 1);
 		}
+	}
+}
+
+@keyframes inb-button-anim {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 95%;
+	}
+}
+
+inb-button {
+	background-bar {
+		display: block;
+		width: 200px;
+		height: 30px;
+		background-color: $primaryColor;
+		border-radius: 10px;
+		foreground-bar {
+			display: block;
+			width: 95%;
+			height: 30px;
+			background-color: $lightColor;
+			animation-name: inb-button-anim;
+			animation-duration: 4s;
+			border-radius: 10px 0px 0px 10px;
+		}
+	}
+	button {
+		display: block;
+		width: 200px;
+		height: 30px;
+		background-color: $primaryColor;
+		color: white;
+		border: none;
+		border-radius: 10px;
 	}
 }
